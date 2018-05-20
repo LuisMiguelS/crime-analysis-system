@@ -4,6 +4,11 @@
         <meta charset="utf-8" />
         <title>C·A·S | @yield('title')</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="user_id" content="{{ Auth::check() ? Auth::user()->id : '' }}">
+        
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -72,6 +77,8 @@
             </div>
         </div>
 
+        <script src="{{ asset('js/app.js') }}"></script>
+
         <!-- jQuery  -->
         <script src="{{ asset('admin/assets/js/jquery.min.js') }}"></script>
         <script src="{{ asset('admin/assets/js/popper.min.js') }}"></script>
@@ -81,14 +88,14 @@
         <script src="{{ asset('admin/assets/js/jquery.slimscroll.js') }}"></script>
 
         <!-- Flot chart -->
-        <script src="{{ asset('admin/plugins/flot-chart/jquery.flot.min.js') }}"></script>
+        {{-- <script src="{{ asset('admin/plugins/flot-chart/jquery.flot.min.js') }}"></script>
         <script src="{{ asset('admin/plugins/flot-chart/jquery.flot.time.js') }}"></script>
         <script src="{{ asset('admin/plugins/flot-chart/jquery.flot.tooltip.min.js') }}"></script>
         <script src="{{ asset('admin/plugins/flot-chart/jquery.flot.resize.js') }}"></script>
         <script src="{{ asset('admin/plugins/flot-chart/jquery.flot.pie.js') }}"></script>
         <script src="{{ asset('admin/plugins/flot-chart/jquery.flot.crosshair.js') }}"></script>
         <script src="{{ asset('admin/plugins/flot-chart/curvedLines.js') }}"></script>
-        <script src="{{ asset('admin/plugins/flot-chart/jquery.flot.axislabels.js') }}"></script>
+        <script src="{{ asset('admin/plugins/flot-chart/jquery.flot.axislabels.js') }}"></script> --}}
 
         <!-- KNOB JS -->
         <!--[if IE]>
@@ -102,7 +109,6 @@
         <!-- App js -->
         <script src="{{ asset('admin/assets/js/jquery.core.js') }}"></script>
         <script src="{{ asset('admin/assets/js/jquery.app.js') }}"></script>
-        <!-- <script src="{{ asset('js/app.js') }}"></script> -->
         @yield('scripts')
 
     </body>

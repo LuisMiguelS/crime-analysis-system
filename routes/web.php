@@ -26,11 +26,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
 	# Rutas para el modulo "Crime" #
 	Route::get('/criminal-profile', 'CrimesController@consultigCriminalProfile')->name('crime_profile');
 	Route::post('/criminal-profile', 'CrimesController@criminalProfile')->name('see_crime_profile');
-
+	
+	# Rutas para el modulo "Danger Person" #
+	Route::get('danger_person', 'DangerPersonController@store');
+	
+	Route::post('notification/get', 'DangerPersonController@notification');
 });
-
-
-
 
 
 Route::post('/badusers', 'BadUserController@store')->name('bad.user');
