@@ -17,9 +17,12 @@ class CreateVehiclesTable extends Migration
             $table->increments('id');
             $table->integer('person_id');
             $table->string('numero_placa');
+            $table->string('numero_chasis');
+            $table->string('marca');
+            $table->string('modelo');
+            $table->year('year_fabricacion');
             $table->string('color');
-            $table->string('estado'); // robado, normal o perdido
-            $table->date('econtrado');
+            $table->string('status'); // robado, normal o perdido
             $table->integer('pertenencia')->default(1);
             $table->timestamps();
         });

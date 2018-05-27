@@ -16,7 +16,7 @@ class CreateVehicleIncidentsTable extends Migration
         Schema::create('vehicle_incidents', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('vehicle_id')->unsigned();
-            $table->string('estado'); // robado, normal o perdido
+            $table->string('status'); // robado, normal o perdido
             $table->date('encontrado');
             $table->timestamps();
         });

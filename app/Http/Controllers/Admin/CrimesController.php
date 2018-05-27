@@ -21,9 +21,11 @@ class CrimesController extends Controller
 		]);
 
     	$person = Person::all()->where('cedula', $request->cedula)->first();
+        $ultima_condena = $person->recluses->last();
 
     	return view('admin.crimes.crime_profile', [
-    		'person' => $person
+    		'person' => $person,
+            'ultima_condena' => $ultima_condena
     	]);
     }
 }

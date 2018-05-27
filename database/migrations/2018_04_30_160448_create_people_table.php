@@ -21,6 +21,9 @@ class CreatePeopleTable extends Migration
             $table->string('sexo');
             $table->date('fecha_nac');
             $table->string('residencia');
+            $table->string('nacionalidad');
+            $table->string('estado_civil');
+            $table->string('alias');
             // $table->timestamps();
         });
     }

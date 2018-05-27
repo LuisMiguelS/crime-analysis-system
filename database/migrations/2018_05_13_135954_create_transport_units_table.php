@@ -17,7 +17,7 @@ class CreateTransportUnitsTable extends Migration
             $table->increments('id');
             $table->string('placa');
             $table->string('modelo');
-            $table->integer('year');
+            $table->year('year');
             // $table->timestamps();
         });
     }

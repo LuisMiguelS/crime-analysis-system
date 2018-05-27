@@ -18,7 +18,6 @@ class CreateUserNotificationsTable extends Migration
             $table->integer('user_id');
             $table->string('ubicacion');
             $table->integer('prioridad');
-            $table->integer('leida');
             $table->timestamps();
         });
     }

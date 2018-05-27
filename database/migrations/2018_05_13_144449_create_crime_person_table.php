@@ -18,10 +18,12 @@ class CreateCrimePersonTable extends Migration
             $table->integer('person_id')->unsigned();
             $table->integer('crime_id')->unsigned();
             $table->integer('ubication_id')->unsigned();
-            $table->integer('weapons_id')->unsigned();
+            $table->integer('weapon_id')->unsigned();
             $table->string('titular');
             $table->text('descripcion');
-            $table->timestamps();
+            $table->year('year');
+            $table->integer('mes');
+            $table->integer('dia');
         });
     }
 

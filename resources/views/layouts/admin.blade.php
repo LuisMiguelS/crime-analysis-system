@@ -9,8 +9,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="user_id" content="{{ Auth::check() ? Auth::user()->id : '' }}">
         
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-        <meta content="Coderthemes" name="author" />
+        <meta content="C·A·S - Crime Analysis System" name="description" />
+        <meta content="C·A·S" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
         <!-- App favicon -->
@@ -22,7 +22,8 @@
         <link href="{{ asset('admin/assets/css/metismenu.min.css') }}" rel="stylesheet" type="text/css" />
         {{-- <link href="{{ asset('admin/assets/css/style.css') }}" rel="stylesheet" type="text/css" /> --}}
         <link href="{{ asset('admin/assets/css/style_dark.css') }}" rel="stylesheet" type="text/css" />
-
+        <link href="{{ asset('admin/plugins/jquery-toastr/jquery.toast.min.css') }}" rel="stylesheet" />
+        
         @yield('styles')
 
         <script src="{{ asset('admin/assets/js/modernizr.min.js') }}"></script>
@@ -31,7 +32,7 @@
     <body>
         <!-- Begin page -->
         <div id="wrapper">
-            <!-- ========== Left Sidebar Start ========== -->
+            <!-- ========== Sidebar ========== -->
             <div class="left side-menu side-menu-sm">
                 <div class="slimscroll-menu" id="remove-scroll">
                     <!-- LOGO -->
@@ -53,17 +54,15 @@
                     <div class="clearfix"></div>
                 </div>
             </div>
-            <!-- Left Sidebar End -->
 
             <!-- ============================================================== -->
-            <!-- Start right Content here -->
+            <!-- Contenido dinamico de la pagina -->
             <!-- ============================================================== -->
 
             <div class="content-page">
-                <!-- Top Bar Start -->
+                
                 @include('admin.includes.top-bar')
 
-                <!-- Start Page content -->
                 <div class="content">
                     <div class="container-fluid">
 
@@ -77,15 +76,16 @@
             </div>
         </div>
 
-        <script src="{{ asset('js/app.js') }}"></script>
 
         <!-- jQuery  -->
+        {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
         <script src="{{ asset('admin/assets/js/jquery.min.js') }}"></script>
         <script src="{{ asset('admin/assets/js/popper.min.js') }}"></script>
         <script src="{{ asset('admin/assets/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('admin/assets/js/metisMenu.min.js') }}"></script>
         <script src="{{ asset('admin/assets/js/waves.js') }}"></script>
         <script src="{{ asset('admin/assets/js/jquery.slimscroll.js') }}"></script>
+        <script src="{{ asset('admin/plugins/jquery-toastr/jquery.toast.min.js') }}"></script>
 
         <!-- Flot chart -->
         {{-- <script src="{{ asset('admin/plugins/flot-chart/jquery.flot.min.js') }}"></script>
@@ -97,18 +97,13 @@
         <script src="{{ asset('admin/plugins/flot-chart/curvedLines.js') }}"></script>
         <script src="{{ asset('admin/plugins/flot-chart/jquery.flot.axislabels.js') }}"></script> --}}
 
-        <!-- KNOB JS -->
-        <!--[if IE]>
-        <script type="text/javascript" src="{{ asset('admin/plugins/jquery-knob/excanvas.js') }}"></script>
-        <![endif]-->
-        <script src="{{ asset('admin/plugins/jquery-knob/jquery.knob.js') }}"></script>
-
-        <!-- Dashboard Init -->
+        <!-- Dashboard -->
         <script src="{{ asset('admin/assets/pages/jquery.dashboard.init.js') }}"></script>
 
         <!-- App js -->
         <script src="{{ asset('admin/assets/js/jquery.core.js') }}"></script>
         <script src="{{ asset('admin/assets/js/jquery.app.js') }}"></script>
+        
         @yield('scripts')
 
     </body>

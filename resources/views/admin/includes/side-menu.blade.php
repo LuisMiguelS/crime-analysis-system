@@ -15,6 +15,7 @@
             <a href="javascript: void(0);"><i class="fi-layers"></i> <span> Consultar </span> <span class="menu-arrow"></span></a>
             <ul class="nav-second-level" aria-expanded="false">
                 <li><a href="{{ route('crime_profile') }}">Perfil Criminal</a></li>
+                <li><a href="{{ route('vehicle_status') }}">Placa Automóvil</a></li>
             </ul>
         </li>
 

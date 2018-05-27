@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Vehicle extends Model
 {
     protected $private = [
-    	'id_persona', 'numero_placa', 'color', 'estado', 'econtrado', 'pertenencia'
+    	'id_persona', 'numero_placa', 'numero_chasis', 'color', 'estado', 'econtrado', 'pertenencia'
     ];
 
     public function person ()

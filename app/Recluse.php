@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Recluse extends Model
 {
     protected $fillable = [
-    	'id_persona', 'id_prision', 'id_oficial', 'titular', 'descripcion', 'estado', 'fecha_salida'
+    	'id_persona', 'id_prision', 'id_oficial', 'titular', 'descripcion', 'estado', 'years', 'fecha_salida'
     ];
+
+    /* Relaciones entre modelos */
 
     public function person ()
     {
@@ -28,5 +30,36 @@ class Recluse extends Model
     public function police ()
     {
         return $this->belongsTo('App\User');
+    }
+
+
+    /* Assesors */
+
+    public function getCreatedAtAttribute ($fecha)
+    {
+        $date = date_create($fecha);
+        $fecha = $date->format('d-m-Y');
+
+        return $fecha;
+    }
+
+    public function getFechaSalidaAttribute ($fecha)
+    {
+        $date = date_create($fecha);
+        $fecha = $date->format('d-m-Y');
+
+        return $fecha;
+    }
+
+    public function getStatusCarcelAttribute ()
+    {
+        $status = $this->status;
+
+        if($status == 'c')
+            return '<p class="text-success">CUMPLIDA</p>';
+        else if($status == 'p')
+            return '<p class="text-warning">EN PROCESO</p>';
+        
+        return '<p class="text-info">EXONERADO(A)</p>';
     }
 }

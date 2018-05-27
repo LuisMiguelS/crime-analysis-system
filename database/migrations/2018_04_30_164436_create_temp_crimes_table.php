@@ -15,6 +15,10 @@ class CreateTempCrimesTable extends Migration
     {
         Schema::create('temp_crimes', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
+            $table->integer('ubication_id')->unsigned();
+            $table->string('caso_policial');
+            $table->text('description');
             $table->timestamps();
         });
     }

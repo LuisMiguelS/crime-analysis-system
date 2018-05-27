@@ -20,8 +20,9 @@ class CreateReclusesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('titular');
             $table->text('descripcion');
+            $table->integer('years');
             $table->date('fecha_salida');
-            $table->string('estado'); // proceso, exonerado, completado
+            $table->string('status'); // proceso, exonerado, completado
             $table->timestamps();
         });
     }
