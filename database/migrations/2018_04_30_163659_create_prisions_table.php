@@ -15,7 +15,8 @@ class CreatePrisionsTable extends Migration
     {
         Schema::create('prisions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('ubication_id')->unsigned();
+            $table->string('nombre_prision');
+            $table->string('direccion');
             // $table->timestamps();
         });
     }

@@ -15,16 +15,16 @@ class VehiclesController extends Controller
 
     public static function vehicleStatus (Request $request)
     {
-    	return 'holaa gente!!';
-
-    	// return view('admin.vehicles.vehicle_status');
+    	return view('admin.vehicles.vehicle_status');
     }
+
+    
 
 
     public function googleLineChart()
     {
 
-        $visitor = DB::table('danger_people')
+        $visitor = DB::table('crime_person')
 
             ->select(
                 DB::raw("year(created_at) as year"),
@@ -41,6 +41,13 @@ class VehiclesController extends Controller
         }
 
         return view('admin.vehicles.vehicle_status')
-            ->with('visitor',json_encode($result));
+            ->with('visitor', json_encode($result));
+    }
+
+    public function map ()
+    {
+        $locations = DB::table('ubications')->get();
+
+        return view('example', compact('locations'));
     }
 }

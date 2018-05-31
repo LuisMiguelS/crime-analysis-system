@@ -24,9 +24,8 @@
             <ul class="nav-second-level" aria-expanded="false">
                 <li><a href="#">Incidentes</a></li>
                 <li><a href="#">Accidentes</a></li>
-                <li><a href="#">Crímenes</a></li>
+                <li><a href="{{ route('general_consulting') }}">Crímenes</a></li>
                 <li><a href="#">Prisioneros</a></li>
-                <li><a href="#">Prisiones</a></li>
             </ul>
         </li>
 

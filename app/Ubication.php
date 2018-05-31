@@ -12,7 +12,7 @@ class Ubication extends Model
 
 	public function cartAccidents ()
     {
-    	return $this->hasMany('App\CartAccident');
+    	return $this->hasMany('App\VehicleAccident');
     }
 
     /*public function crimes ()

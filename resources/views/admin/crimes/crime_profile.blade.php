@@ -28,11 +28,15 @@
 					@endif
 
 					<h4 class="mt-4">Última Condena: {!! $ultima_condena->status_carcel !!}</h4>
-					<p>
-						Carcel La Vega <br>
-						{{ $ultima_condena->years }} año(s) de prisión <br>
-						[{{ $ultima_condena->created_at }}] - [{{ $ultima_condena->fecha_salida }}]
-					</p>
+					@if(isset($prision))
+						<p>
+							<i class="mdi mdi-map-marker text-default"></i> {{ $prision->nombre_prision }} - {{ $prision->direccion }}<br>
+							<i class="mdi mdi-calendar-clock text-danger"></i> {{ $ultima_condena->years }} año(s) de prisión <br>
+							<i class="mdi mdi-timer-sand text-primary"></i> [{{ $ultima_condena->created_at }}] - [{{ $ultima_condena->fecha_salida }}]
+						</p>
+					@else
+						<p>Ninguna</p>
+					@endif
 				</div>
 
 				<div class="col-md-7">
@@ -88,7 +92,7 @@
 					<h3 class="mt-5">· Historial de Condenas</h3>
 					
 					<ul>
-						@if(isset($person->recluses))
+						@if(isset($prision))
 							@foreach($person->recluses as $recluse)
 								<li>
 									{{ $recluse->titular }} el <strong>{{ $recluse->created_at }}</strong> con una condena de <strong>{{ $recluse->years }} año(s)</strong>.
@@ -100,7 +104,7 @@
 								</li>
 							@endforeach
 						@else
-							<li>Ningún historial de prisión</li>
+							<li>Ningún historial de prisión.</li>
 						@endif
 					</ul>
 
@@ -121,7 +125,7 @@
                         <tbody>
                         	@foreach($person->crimes as $crime)
 	                            <tr>
-	                                <td>{{ ucfirst($crime['pivot']->titular) }}</td>
+	                                <td>Acusado(a) por: {{ ucfirst($crime['pivot']->titular) }}</td>
 	                                <td>{{ ucfirst($crime['pivot']->descripcion) }}</td>
 	                                <td>{{ ucwords($crime->nombre_crimen) }}</td>
 	                                <td>{{ $crime['pivot']->created_at }}</td>

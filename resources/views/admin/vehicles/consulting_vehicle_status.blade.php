@@ -14,7 +14,7 @@
                 </p>
 	        	
 	        	<div class="card-body">
-	                <form>
+	                <form method="POST" action="{{ route('see_vehicle_status') }}">
                         @csrf
 
 	                    <div class="form-group">
@@ -48,20 +48,13 @@
 
                 if(!numero_placa.length)
                 {
-                	$.toast({
-				        heading: '¡Oh, espera!',
-				        text: 'Debes ingresar un número de placa para proseguir.',
-				        position: 'top-right',
-				        loaderBg: '#bf441d',
-				        icon: 'error',
-				        hideAfter: 7000,
-				        stack: 1
-				    });
+				    dangerAlert('¡Oh, espera!', 'Debes ingresar un número de placa para proseguir.');
                 }
 
                 else
                 {
-                	$.ajax({
+                	$('form').submit();
+                	/*$.ajax({
 			            type: 'POST',
 			            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
 			            url: '{{ route('see_vehicle_status') }}',
@@ -69,7 +62,7 @@
 			            success: function( response ) {
 			                console.log(response);
 			            }
-			        });
+			        });*/
                 }
             });
         });

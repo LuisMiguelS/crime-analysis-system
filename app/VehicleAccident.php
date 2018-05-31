@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CartAccident extends Model
+class VehicleAccident extends Model
 {
     protected $protected = [
     	'id_persona', 'id_ubicacion', 'titular', 'descripcion'

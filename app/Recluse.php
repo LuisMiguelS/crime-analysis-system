@@ -10,6 +10,7 @@ class Recluse extends Model
     	'id_persona', 'id_prision', 'id_oficial', 'titular', 'descripcion', 'estado', 'years', 'fecha_salida'
     ];
 
+    
     /* Relaciones entre modelos */
 
     public function person ()

@@ -26,7 +26,7 @@
 	                    </div>
 
 	                    <div class="form-group text-right m-b-0">
-	                        <button class="btn btn-custom waves-effect waves-light" type="submit" id="consultar">
+	                        <button class="btn btn-custom waves-effect waves-light" type="button" id="consultar">
 	                            <i class="fa fa-search m-r-5"></i>
 	                            <span>Consultar</span>
 	                        </button>
@@ -42,10 +42,22 @@
 @section('scripts')
 	<script type="text/javascript">
         $(document).ready(function() {
-            
-            $('#consultar').click(function() {
-                window.location = '' + "{{ route('see_crime_profile') }}" + '';;
-            });
+
+            $('#consultar').click(function () {
+
+				var cedula = $('#cedula').val();
+
+				if(!cedula.length)
+				{
+					dangerAlert('¡Oh, espera!', 'Debes ingresar un número de cédula para proseguir.');
+					return 0;
+				}
+
+				else
+				{
+					$('form').submit();
+				}
+			});
         });
 	</script>
 @endsection
