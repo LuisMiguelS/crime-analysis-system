@@ -7,7 +7,9 @@
 
 	<div class="row card">
 		<div class="col-md-12">
-			<h1 class="text-center header-title mb-4 mt-4 text-custom" style="font-size: 25px;">Perfil Criminal C·A·S</h1>
+			<h1 class="text-center header-title mb-4 mt-4 text-custom" style="font-size: 25px;">Perfil Criminal C·A·S
+				<a href="{{ route('crime_profile') }}"><i class="fa fa-mail-reply text-info" title="Consultar Nuevamente"></i></a></h1>
+			</h1>
 		</div>
 
 		<div class="col-md-12 card-body">
@@ -19,7 +21,7 @@
 
 					<h4>Status:</h4>
 					@if(isset($person->dangerPeople[0]))
-						<h3 class="text-danger">{{ strtoupper($person->dangerPeople[0]->status) }}</h3>
+						<h3 class="text-danger">{!! strtoupper($person->dangerPeople[0]->status) !!}</h3>
 						<span class="text-muted" style="font-size: 15px;">
 							<strong>POR: </strong>{{ strtoupper($person->dangerPeople[0]->titular) }}
 						</span>

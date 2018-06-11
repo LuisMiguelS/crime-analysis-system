@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Recluse extends Model
 {
     protected $fillable = [
-    	'id_persona', 'id_prision', 'id_oficial', 'titular', 'descripcion', 'estado', 'years', 'fecha_salida'
+    	'person_id', 'prision_id', 'user_id', 'titular', 'descripcion', 'years', 'fecha_salida', 'status'
     ];
 
     

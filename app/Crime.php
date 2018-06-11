@@ -16,7 +16,7 @@ class Crime extends Model
     public function persons ()
     {
         return $this->belongsToMany('App\Person')
-        ->withPivot('titular','descripcion', 'created_at');
+            ->withPivot('titular','descripcion', 'created_at');
     }
 
 

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
     protected $fillable = [
-    	'id_ubicacion'
+    	'ubication_id'
     ];
 
     public function polices ()

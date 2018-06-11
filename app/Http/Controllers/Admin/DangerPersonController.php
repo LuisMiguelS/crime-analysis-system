@@ -15,13 +15,22 @@ use Illuminate\Support\Facades\Notification;
 
 class DangerPersonController extends Controller
 {
+    public function index ()
+    {
+        $people = Person::all();
+
+        return view('admin.danger_person.notificate_person', [
+            'people' => $people
+        ]);
+    }
+
     public function store (Request $request)
     {
     	$danger_person = DangerPerson::create([
-    		'person_id' => rand(1, 4),
-    		'titular' => 'prueba',
-    		'descripcion' => 'algo por aqui!',
-    		'status' => 'buscado'
+    		'person_id' => $request->person_id,
+    		'titular' => $request->titular,
+    		'descripcion' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in nunc sit amet quam pharetra hendrerit volutpat blandit nibh.',
+    		'status' => $request->status
     	]);
 
     	$users = User::all();

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Person extends Model
 {
     protected $fillable = [
-    	'cedula', 'nombres', 'apellidos', 'sexo', 'fecha_nac', 'residencia'
+    	'cedula', 'nombres', 'apellidos', 'sexo', 'fecha_nac', 'residencia', 'nacionalidad', 'estado_civil'
     ];
 
 
@@ -26,11 +26,6 @@ class Person extends Model
     public function vehicles ()
     {
         return $this->hasMany('App\Vehicle');
-    }
-
-    public function cartAccidents ()
-    {
-    	return $this->hasMany('App\CartAccident');
     }
 
     public function crimes ()

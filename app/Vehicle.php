@@ -7,8 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Vehicle extends Model
 {
     protected $private = [
-    	'id_persona', 'numero_placa', 'numero_chasis', 'color', 'estado', 'econtrado', 'pertenencia'
+    	'person_id', 'numero_placa', 'numero_chasis', 'marca', 'modelo', 'year_fabricacion', 'color', 'status', 'pertenencia'
     ];
+
+
+    /* Relaciones entre modelos */
 
     public function person ()
     {
@@ -23,5 +26,23 @@ class Vehicle extends Model
     public function vehicleTransfers ()
     {
     	return $this->hasMany('App\VehicleTransfer');
+    }
+
+    public function vehicleAccidents ()
+    {
+        return $this->hasMany('App\VehicleAccident');
+    }
+
+
+    /* Assesors */
+
+    public function getMarcaAttribute ($marca)
+    {
+        return ucwords($marca);
+    }
+
+    public function getModeloAttribute ($modelo)
+    {
+        return ucwords($modelo);
     }
 }

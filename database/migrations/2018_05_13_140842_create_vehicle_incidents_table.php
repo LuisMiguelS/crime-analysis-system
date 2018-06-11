@@ -17,7 +17,7 @@ class CreateVehicleIncidentsTable extends Migration
             $table->increments('id');
             $table->integer('vehicle_id')->unsigned();
             $table->string('status'); // robado, normal o perdido
-            $table->date('encontrado');
+            $table->date('encontrado')->nullable();
             $table->timestamps();
         });
     }

@@ -71,7 +71,7 @@
 </div>
 
 <div class="row">
-    <div class="col-lg-8">
+    <div class="col-lg-12">
         <div class="card-box">
             <h4 class="header-title mb-3">Personas apresadas recientemente</h4>
             <div class="table-responsive">
@@ -116,12 +116,69 @@
         </div>
     </div>
 
+    <div class="col-lg-8">
+        <div class="card-box">
+            <h4 class="header-title mb-3">últimas alertas de personas peligrosas</h4>
+            <div class="table-responsive">
+                <table class="table table-hover table-centered m-0">
+                    <thead>
+                    <tr>
+                        <th>Profile</th>
+                        <th>Nombre</th>
+                        <th>Alerta</th>
+                        <th>Status</th>
+                        <th>Fecha Emisión</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @if($alerts)
+                        @foreach($alerts as $alert)
+                            <tr>
+                                <td>
+                                    <img src="{{ asset('images/'.$alert['person_id'].'.jpg') }}" title="contact-img" class="rounded-circle thumb-sm" />
+                                </td>
+
+                                <td>
+                                    <h5 class="m-0 font-weight-normal">{{ $alert['person']['nombres'] }}</h5>
+                                    {{-- <p class="mb-0 text-muted"><small>Apresado desde el {{ $recluso->created_at }}</small></p> --}}
+                                </td>
+
+                                <td>{{ $alert['titular'] }}</td>
+
+                                <td>{!! $alert['status'] !!}</td>
+
+                                <td>
+                                    <i class="mdi mdi-calendar-clock text-info"></i> {{ $alert['created_at'] }}
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
     <div class="col-lg-4">
         <div class="card-box">
-            <h4 class="m-t-0 header-title">últimas alertas de personas peligrosas</h4>
+            <h4 class="m-t-0 header-title">Cantidad de prisioneros por año</h4>
 
             <div id="donut-chart">
-                <div id="donut-chart-container" class="flot-chart mt-5" style="height: 340px;"></div>
+                <div id="donut-chart-container" class="flot-chart mt-5" style="height: 340px;">
+                    <div class="inbox-widget slimscroll" style="max-height: 370px;">
+                        @if($prisioneros_yyear)
+                            @foreach($prisioneros_yyear as $prisionero)
+                            <a>
+                                <div class="inbox-item">
+                                    <p class="inbox-item-author">Cant. de Prisioneros: {{ $prisionero->cant }}</p>
+                                    <p class="inbox-item-text"><i class="fa fa-calendar text-success"></i> {{ $prisionero->yyear }}</p>
+                                    <p class="inbox-item-date">C·A·S</p>
+                                </div>
+                            </a>
+                            @endforeach
+                        @endif
+                    </div>
+                </div>
             </div>
         </div>
     </div>

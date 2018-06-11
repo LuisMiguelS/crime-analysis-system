@@ -25,25 +25,19 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
 	# Rutas para el modulo "Crime" #
 	Route::get('/criminal-profile', 'CrimesController@consultigCriminalProfile')->name('crime_profile');
 	Route::post('/criminal-profile', 'CrimesController@criminalProfile')->name('see_crime_profile');
-	Route::get('/consulting-crime', 'CrimesController@generalConsulting')->name('general_consulting');
+	Route::get('/consulting-crimes', 'CrimesController@generalConsulting')->name('general_consulting');
 	Route::post('/generate-consulting', 'CrimesController@generateData')->name('generate_consulting');
 	
 	# Rutas para el modulo "Danger Person" #
-	Route::get('/danger_person', 'DangerPersonController@store');
+	Route::get('/danger_person', 'DangerPersonController@index')->name('danger_person');
+	Route::post('/notification', 'DangerPersonController@store')->name('save_notification');
 	Route::post('/notification/get', 'DangerPersonController@notification');
 
 	# Rutas para el modulo de "Vehicles" #
 	Route::get('/vehicle-status', 'VehiclesController@consultigVehicleStatus')->name('vehicle_status');
 	Route::post('/vehicle-status', 'VehiclesController@vehicleStatus')->name('see_vehicle_status');
-	
-
-	Route::get('map', 'VehiclesController@map');
-});
-
-
-
-Route::get('/chart', function () {
-	return view('admin.chart');
+	Route::get('/consulting-accidents', 'VehiclesController@index')->name('general_consulting_accidents');
+	Route::post('/consulting-accidents', 'VehiclesController@generateData')->name('general_consulting_accidents');
 });
 
 Route::get('/test', function () {

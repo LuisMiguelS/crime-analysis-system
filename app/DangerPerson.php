@@ -10,8 +10,37 @@ class DangerPerson extends Model
     	'person_id', 'titular', 'descripcion', 'status'
     ];
 
+
+    /* Relaciones entre modelos */
+
     public function person ()
     {
     	return $this->belongsTo('App\Person');
+    }
+
+
+    /* Assesors */
+
+    public function getTitularAttribute ($titular)
+    {
+        return ucwords($titular);
+    }
+
+    public function getCreatedAtAttribute ($fecha)
+    {
+        $date = date_create($fecha);
+        $fecha = $date->format('d-m-Y');
+
+        return $fecha;
+    }
+
+    public function getStatusAttribute ($status)
+    {
+    	if($status == 'buscado')
+    		return '<span class="badge badge-danger">'.ucwords($status).'</span>';
+    	if($status == 'perdido')
+    		return '<span class="badge badge-warning">'.ucwords($status).'</span>';
+
+    	return $status;
     }
 }

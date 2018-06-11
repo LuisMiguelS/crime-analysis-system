@@ -34,7 +34,7 @@
 					</div>
 				</div>
 
-				<button class="btn btn-custom waves-effect waves-light" type="button" id="consultar">
+				<button class="btn btn-danger btn-block waves-effect waves-light" type="button" id="consultar">
                     <i class="fa fa-search m-r-5"></i>
                     <span>Consultar</span>
                 </button>

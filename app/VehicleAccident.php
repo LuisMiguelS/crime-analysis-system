@@ -7,16 +7,29 @@ use Illuminate\Database\Eloquent\Model;
 class VehicleAccident extends Model
 {
     protected $protected = [
-    	'id_persona', 'id_ubicacion', 'titular', 'descripcion'
+    	'vehicle_id', 'ubication_id', 'titular'
     ];
 
-    public function person ()
+    
+    /* Relaciones entre modelos */
+
+    public function vehicle ()
     {
-    	return $this->belongsTo('App\Person');
+    	return $this->belongsTo('App\Vehicle');
     }
 
     public function ubication ()
     {
     	return $this->belongsTo('App\Ubication');
+    }
+
+
+    /* Assesors */
+
+    public function getCreatedAtAttribute ($created_at)
+    {   
+        $fecha = date_create($created_at);
+        
+        return date_format($fecha, 'd/m/Y');
     }
 }

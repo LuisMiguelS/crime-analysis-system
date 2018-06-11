@@ -15,10 +15,9 @@ class CreateVehicleAccidentsTable extends Migration
     {
         Schema::create('vehicle_accidents', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('person_id')->unsigned();
+            $table->integer('vehicle_id')->unsigned();
             $table->integer('ubication_id')->unsigned();
             $table->string('titular');
-            $table->text('descripcion');
             $table->timestamps();
         });
     }
