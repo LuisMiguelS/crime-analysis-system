@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 // use App\Notification;
 use Auth;
-
+use Session;
 use App\User;
 use App\Person;
 use App\DangerPerson;
@@ -38,8 +38,8 @@ class DangerPersonController extends Controller
 
     	Notification::send($users, new NotifyDangerPerson($person, $danger_person));
 
-    	// Session::flash('status', 'Comment was successfully created');
-        return 'funcionoo!!!';
+    	Session::flash('success', 'La alerta se ha enviado a la base satisfactoriamente.');
+        return redirect()->back();
     }
 
     public function notification (Request $request)

@@ -6,7 +6,7 @@
             <span class="badge badge-danger badge-pill noti-icon-badge">{{ notifications.length }}</span>
         </a>
 
-        <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
+        <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg" style="width: 400px;">
 
             <!-- item-->
             <div class="dropdown-item noti-title">
@@ -17,8 +17,11 @@
                 <a v-for="notification in notifications" href="javascript:void(0);" class="dropdown-item notify-item">
                     <div class="notify-icon bg-danger"><i class="mdi mdi-comment-account-outline"></i></div>
                     <p class="notify-details">
-                        {{ notification.data.person.nombres }} {{ notification.data.person.apellidos }} - 
-                        <strong>{{ notification.data.danger_notification.titular }}</strong> 
+                        <strong>
+                            {{ notification.data.person.nombres }} {{ notification.data.person.apellidos }}
+                        </strong>
+                        <br> 
+                        {{ notification.data.danger_notification.titular }}
                         <small class="text-muted">{{ notification.created_at }}</small>
                     </p>
                 </a>

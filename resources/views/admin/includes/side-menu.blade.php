@@ -21,10 +21,9 @@
         <li>
             <a href="javascript: void(0);"><i class="fi-bar-graph-2"></i><span> Reportes </span> <span class="menu-arrow"></span></a>
             <ul class="nav-second-level" aria-expanded="false">
-                <li><a href="#">Incidentes</a></li>
+                <li><a href="{{ Route('consulting_incident') }}">Incidentes</a></li>
                 <li><a href="{{ route('general_consulting_accidents') }}">Accidentes</a></li>
                 <li><a href="{{ route('general_consulting') }}">Crímenes</a></li>
-                <li><a href="#">Prisioneros</a></li>
             </ul>
         </li>
 

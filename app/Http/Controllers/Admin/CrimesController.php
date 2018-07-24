@@ -13,12 +13,14 @@ class CrimesController extends Controller
 {
     public static function consultigCriminalProfile ()
     {
-    	return view('admin.crimes.consulting_crime_profile');
+        $people = Person::all();
+
+    	return view('admin.crimes.consulting_crime_profile', compact('people'));
     }
 
     public static function criminalProfile (Request $request)
     {
-    	$person = Person::where('cedula', $request->cedula)->first();
+    	$person = Person::findOrFail($request->cedula);
         $ultima_condena = optional($person->recluses->last());
         $prision = optional($person->recluses()->with('prision')->get()->last())->prision;
 
@@ -86,7 +88,7 @@ class CrimesController extends Controller
             'person_crimen' => $person_crimen
         );
 
-        return response()->json(['data' => $response]); 
+        return response()->json(['data' => $response]);
     }
 }
 

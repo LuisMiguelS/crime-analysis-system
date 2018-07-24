@@ -1,6 +1,5 @@
 <div class="topbar" id="app">
     <nav class="navbar-custom">
-
         <ul class="list-unstyled topbar-right-menu float-right mb-0">
 
             <danger-person v-bind:notifications="notifications"></danger-person>
@@ -17,14 +16,14 @@
                     </div>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    {{-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fi-head"></i> <span>Mi perfil</span>
-                    </a>
+                    </a> --}}
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    {{-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fi-lock"></i> <span>Bloquear pantalla</span>
-                    </a>
+                    </a> --}}
 
                     <!-- item-->
                     <div>

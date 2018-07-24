@@ -38,7 +38,7 @@ class DangerPerson extends Model
     {
     	if($status == 'buscado')
     		return '<span class="badge badge-danger">'.ucwords($status).'</span>';
-    	if($status == 'perdido')
+    	if($status == 'desaparecido')
     		return '<span class="badge badge-warning">'.ucwords($status).'</span>';
 
     	return $status;

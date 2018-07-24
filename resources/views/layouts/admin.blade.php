@@ -76,7 +76,6 @@
             </div>
         </div>
 
-
         <!-- jQuery  -->
         {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
         <script src="{{ asset('admin/assets/js/jquery.min.js') }}"></script>
@@ -87,25 +86,20 @@
         <script src="{{ asset('admin/assets/js/jquery.slimscroll.js') }}"></script>
         <script src="{{ asset('admin/plugins/jquery-toastr/jquery.toast.min.js') }}"></script>
 
-        <!-- Flot chart -->
-        {{-- <script src="{{ asset('admin/plugins/flot-chart/jquery.flot.min.js') }}"></script>
-        <script src="{{ asset('admin/plugins/flot-chart/jquery.flot.time.js') }}"></script>
-        <script src="{{ asset('admin/plugins/flot-chart/jquery.flot.tooltip.min.js') }}"></script>
-        <script src="{{ asset('admin/plugins/flot-chart/jquery.flot.resize.js') }}"></script>
-        <script src="{{ asset('admin/plugins/flot-chart/jquery.flot.pie.js') }}"></script>
-        <script src="{{ asset('admin/plugins/flot-chart/jquery.flot.crosshair.js') }}"></script>
-        <script src="{{ asset('admin/plugins/flot-chart/curvedLines.js') }}"></script>
-        <script src="{{ asset('admin/plugins/flot-chart/jquery.flot.axislabels.js') }}"></script> --}}
-
         <!-- Dashboard -->
-        <script src="{{ asset('admin/assets/pages/jquery.dashboard.init.js') }}"></script>
+        {{-- <script src="{{ asset('admin/assets/pages/jquery.dashboard.init.js') }}"></script> --}}
 
         <!-- App js -->
         <script src="{{ asset('admin/assets/js/jquery.core.js') }}"></script>
         <script src="{{ asset('admin/assets/js/jquery.app.js') }}"></script>
         <script src="{{ asset('js/resources.js') }}"></script>
         
-        @yield('scripts')
+        <script type="text/javascript">
+            @if(Session::has('success'))
+                successAlert('¡Bien Hecho!', '{{ Session::get('success') }}');
+            @endif
+        </script>
 
+        @yield('scripts')
     </body>
 </html>

@@ -15,14 +15,14 @@
                     <div class="card-box widget-flat border-secondary bg-secondary text-white">
                         <i class="fa fa-car"></i>
                         <h3 class="m-b-10">{{ $cant_accidentes[0]->cant }}</h3>
-                        <p class="text-uppercase m-b-5 font-13 font-600">Cantidad de Accidentes Automovilisticos</p>
+                        <p class="text-uppercase m-b-5 font-13 font-600">Cantidad de Accidentes Automovilístico</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-6 col-xl-3">
                     <div class="card-box bg-warning widget-flat border-warning text-white">
                         <i class="fa fa-warning"></i>
                         <h3 class="m-b-10">{{ $cant_incidentes[0]->cant }}</h3>
-                        <p class="text-uppercase m-b-5 font-13 font-600">Cantidad de Incidentes Automovilisticos </p>
+                        <p class="text-uppercase m-b-5 font-13 font-600">Cantidad de Incidentes Automovilístico</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-6 col-xl-3">
@@ -55,7 +55,7 @@
 
     <div class="col-lg-6">
         <div class="card-box">
-            <h4 class="header-title">Estadísticas de crímenes por tipo de arma del año anterior <span class="text-muted">({{ date('Y') - 1 }})</span></h4>
+            <h4 class="header-title">Estadísticas de crímenes por tipo de arma del año anterior <span class="text-muted">({{ date('Y') - 1 }})</span> Expresado en %</h4>
             <canvas id="oilChart" height="250"></canvas>
         </div>
     </div>
@@ -226,16 +226,16 @@
                         ?>
                     ],
                     backgroundColor: [
-                        'rgba(255, 99, 132)',
-                        'rgba(54, 162, 235)',
-                        'rgba(255, 206, 86)',
-                        'rgba(75, 192, 192)'
+                        '#263238',
+                        '#BF360C',
+                        '#0D47A1',
+                        '#004D40'
                     ],
                     borderColor: [
-                        'rgba(255, 99, 132)',
-                        'rgba(54, 162, 235)',
-                        'rgba(255, 206, 86)',
-                        'rgba(75, 192, 192)'
+                        '#263238',
+                        '#BF360C',
+                        '#0D47A1',
+                        '#004D40'
                     ],
                     borderWidth: 2
                 }]
@@ -284,10 +284,10 @@
                         ?>
                     ],
                     backgroundColor: [
-                        "#FF3D00",
-                        "#D81B60",
+                        "#880E4F",
                         "#00B8D4",
-                        "#66BB6A"
+                        "#FFAB00",
+                        "#3E2723"
                     ]
                 }]
         };

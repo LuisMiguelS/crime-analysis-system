@@ -39,7 +39,7 @@ class DashboardController extends Controller
 
 
         /* Cantidad de crimenes agrupados por tipo de arma */
-        $crimenes_arma = DB::select('select upper(w.nombre_arma) as arma, count(cp.crime_id) as total from crimes c, crime_person cp, weapons w where c.id = cp.crime_id and cp.weapon_id = w.id and year(cp.created_at) = ? group by w.nombre_arma',  array(date('Y') - 1));
+        $crimenes_arma = DB::select('select upper(w.nombre_arma) as arma, round((count(cp.crime_id) / (select count(cp.id) from crime_person cp) * 100), 2) as total from crimes c, crime_person cp, weapons w where c.id = cp.crime_id and cp.weapon_id = w.id and year(cp.created_at) = ? group by w.nombre_arma',  array(date('Y') - 1));
 
 
         /* Personas peligrosas - Ultimas alertas */

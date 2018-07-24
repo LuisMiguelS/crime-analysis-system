@@ -1005,11 +1005,12 @@ var app = new Vue({
       _this.notifications = response.data;
     });
 
-    /*var user_id = $('meta[name="user_id"]').attr('content');
-    	Echo.private('App.User.' + user_id).notification((notification) => {
-    	this.notifications.push(notification);
-    	// console.log(notification);
-    });*/
+    var user_id = $('meta[name="user_id"]').attr('content');
+
+    Echo.private('App.User.' + user_id).notification(function (notification) {
+      _this.notifications.push(notification);
+      console.log(notification);
+    });
   }
 });
 
@@ -48419,6 +48420,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['notifications'],
@@ -48472,7 +48476,8 @@ var render = function() {
       "div",
       {
         staticClass:
-          "dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg"
+          "dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg",
+        staticStyle: { width: "400px" }
       },
       [
         _vm._m(0),
@@ -48491,19 +48496,22 @@ var render = function() {
                 _vm._m(1, true),
                 _vm._v(" "),
                 _c("p", { staticClass: "notify-details" }, [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(notification.data.person.nombres) +
-                      " " +
-                      _vm._s(notification.data.person.apellidos) +
-                      " - \n                    "
-                  ),
                   _c("strong", [
                     _vm._v(
-                      _vm._s(notification.data.danger_notification.titular)
+                      "\n                        " +
+                        _vm._s(notification.data.person.nombres) +
+                        " " +
+                        _vm._s(notification.data.person.apellidos) +
+                        "\n                    "
                     )
                   ]),
                   _vm._v(" "),
+                  _c("br"),
+                  _vm._v(
+                    " \n                    " +
+                      _vm._s(notification.data.danger_notification.titular) +
+                      "\n                    "
+                  ),
                   _c("small", { staticClass: "text-muted" }, [
                     _vm._v(_vm._s(notification.created_at))
                   ])

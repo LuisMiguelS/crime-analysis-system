@@ -23,3 +23,16 @@ function dangerAlert (heading, text)
         stack: 1
     });
 }
+
+function successAlert (heading, text)
+{
+    $.toast({
+        heading: heading,
+        text: text,
+        position: 'top-right',
+        loaderBg: '#5ba035',
+        icon: 'success',
+        hideAfter: 6000,
+        stack: 1
+    });
+}
