@@ -10,6 +10,7 @@ use App\Person;
 use App\DangerPerson;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Notification as Notifications;
 use App\Notifications\NotifyDangerPerson;
 use Illuminate\Support\Facades\Notification;
 
@@ -62,8 +63,12 @@ class DangerPersonController extends Controller
     {
         $danger_person = DangerPerson::find($id);
 
+        # Actualizando el estado "atrapado" de la entidad "danger_people"
         $danger_person->atrapado = 'atrapado';
         $danger_person->save();
+
+        # Marcando como leido la notificacion en la entidad "notifications"
+        Notifications::where('notifiable_id', $id)->update(['read_at' => now()]);
 
         Session::flash('success', 'El status de la alerta seleccionada ha sido cambiada satisfactoriamente.');
         return redirect()->back();

@@ -10,7 +10,7 @@
 
             <!-- item-->
             <div class="dropdown-item noti-title">
-                <h5 class="m-0"><span class="float-right"><a href="" class="text-dark"><small>Clear All</small></a> </span>Notifications</h5>
+                <h5 class="m-0"><span class="float-right"><small>C·A·S</small> </span>Últimas Alertas</h5>
             </div>
 
             <div class="slimscroll" style="height: 230px;">
@@ -28,8 +28,8 @@
             </div>
             
             <!-- All-->
-            <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
-                View all <i class="fi-arrow-right"></i>
+            <a href="/admin/danger-person-alerts" class="dropdown-item text-center text-primary notify-item notify-all">
+                Ver Historial <i class="fi-arrow-right"></i>
             </a>
 
         </div>

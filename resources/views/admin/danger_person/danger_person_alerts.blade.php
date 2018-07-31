@@ -23,7 +23,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @if($alerts)
+                    @if(isset($alerts))
                         @foreach($alerts as $alert)
                             <tr>
                                 <td>
@@ -68,7 +68,7 @@
                         @endforeach
                     @else
                     	<tr>
-                    		<th colspan="5" class="text-center">No hay alertas registradas.</th>
+                    		<th colspan="1" class="text-center">No hay alertas registradas.</th>
                     	</tr>
                     @endif
                     </tbody>

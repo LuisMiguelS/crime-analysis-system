@@ -48534,11 +48534,9 @@ var staticRenderFns = [
     return _c("div", { staticClass: "dropdown-item noti-title" }, [
       _c("h5", { staticClass: "m-0" }, [
         _c("span", { staticClass: "float-right" }, [
-          _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-            _c("small", [_vm._v("Clear All")])
-          ])
+          _c("small", [_vm._v("C·A·S")])
         ]),
-        _vm._v("Notifications")
+        _vm._v("Últimas Alertas")
       ])
     ])
   },
@@ -48559,10 +48557,10 @@ var staticRenderFns = [
       {
         staticClass:
           "dropdown-item text-center text-primary notify-item notify-all",
-        attrs: { href: "javascript:void(0);" }
+        attrs: { href: "/admin/danger-person-alerts" }
       },
       [
-        _vm._v("\n            View all "),
+        _vm._v("\n            Ver Historial "),
         _c("i", { staticClass: "fi-arrow-right" })
       ]
     )
