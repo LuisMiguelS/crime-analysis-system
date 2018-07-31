@@ -16,7 +16,7 @@
 
 					<div class="row">
 						<div class="form-group col-md-12">
-							<label>Busca la persona para emitir la alerta</label>
+							<label>Busca la Persona Para Emitir la Alerta</label>
 				            <select name="person_id" id="person_id" class="select2 form-control">
 				                <option value="0">Selecciona una persona para continuar...</option>
 				                <optgroup label="* No. de Cédula: Nombre(s) y Apellido(s) *">

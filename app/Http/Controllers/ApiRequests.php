@@ -18,13 +18,14 @@ class ApiRequests extends Controller
 
     	if(!empty($person))
     	{
-	        $ultima_condena = $person->recluses->last();
-	        $prision = optional($person->recluses()->with('prision')->get()->last())->prision;
+            $ultima_condena = optional($person)->recluses->last();
+            $prision = optional($person->recluses()->with('prision')->get()->last())->prision;
+            $danger_person = optional($person)->dangerPeople->last();
 
 	        $response = array(
-	            'persona' => $person,
-	            'ultima_condena' => $ultima_condena,
-	            'prision' => $prision
+                'person' => $person,
+                'ultima_condena' => $ultima_condena,
+                'prision' => !empty($ultima_condena) ? $prision : ''
 	        );
         	
         	return response()->json(['data' => $response]);

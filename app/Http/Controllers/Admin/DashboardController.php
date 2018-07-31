@@ -35,7 +35,7 @@ class DashboardController extends Controller
 
         /* Ultimas personas apresadas */
 
-        $reclusos = DB::select("select p.id, upper(p.nombres) as nombre, upper(p.apellidos) as apellido, r.years, upper(c.nombre_crimen) as crimen, upper(ps.nombre_prision) as prision, date_format(r.created_at, '%d-%m-%Y') created_at from people p, recluses r, crime_person cp, crimes c, prisions ps where c.id = cp.crime_id and cp.person_id = p.id and p.id = r.person_id and r.prision_id = ps.id and r.`status` = 'p' limit 10");
+        $reclusos = DB::select("select p.id, upper(p.nombres) nombre, upper(p.apellidos) apellido, r.titular, r.years, date_format(r.created_at, '%d-%m-%Y') created_at, upper(pr.nombre_prision) as prision from people p, recluses r, prisions pr where p.id = r.person_id and r.prision_id = pr.id order by r.id desc limit 10");
 
 
         /* Cantidad de crimenes agrupados por tipo de arma */
@@ -46,8 +46,7 @@ class DashboardController extends Controller
         $alerts = DangerPerson::with('person')
             ->orderBy('created_at', 'desc')
             ->limit(10)
-            ->get()
-            ->toArray();
+            ->get();
 
 
         /* Retornando los valores a la vista */

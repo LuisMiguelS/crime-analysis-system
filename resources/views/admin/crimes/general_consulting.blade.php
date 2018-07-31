@@ -130,10 +130,11 @@
 		                {
 		                    data: val_armas,
 		                    backgroundColor: [
-		                        "#283593",
-		                        "#00E5FF",
-		                        "#C51162",
-		                        "#FBC02D"
+		                        "#F57C00",
+		                        "#4E342E",
+		                        "#0097A7",
+		                        "#01579B",
+		                        "#DD2C00"
 		                    ]
 		                }
 		            ]
@@ -158,31 +159,31 @@
 		                datasets: [{
 		                    data: cant_crimen,
 		                    backgroundColor: [
-		                        '#00ACC1',
-		                        '#FBC02D',
-		                        '#424242',
-		                        '#FF3D00',
+		                        '#00695C',
+		                        '#00BFA5',
+		                        '#0277BD',
+		                        '#D84315',
+		                        '#4E342E',
+		                        '#FF8F00',
+		                        '#0091EA',
 		                        '#d50000',
-		                        '#E040FB',
-		                        '#388E3C',
-		                        '#03A9F4',
-		                        '#EC407A',
-		                        '#FFCC80',
-		                        '#757575',
+		                        '#FFD600',
+		                        '#4DD0E1',
+		                        '#FF5722',
 		                        '#607D8B'
 		                    ],
 		                    borderColor: [
-		                        '#00ACC1',
-		                        '#FBC02D',
-		                        '#424242',
-		                        '#FF3D00',
+		                        '#00695C',
+		                        '#00BFA5',
+		                        '#0277BD',
+		                        '#D84315',
+		                        '#4E342E',
+		                        '#FF8F00',
+		                        '#0091EA',
 		                        '#d50000',
-		                        '#E040FB',
-		                        '#388E3C',
-		                        '#03A9F4',
-		                        '#EC407A',
-		                        '#FFCC80',
-		                        '#757575',
+		                        '#FFD600',
+		                        '#4DD0E1',
+		                        '#FF5722',
 		                        '#607D8B'
 		                    ],
 		                    borderWidth: 2
@@ -253,7 +254,7 @@
 
 		      	$('#persons').empty();
 		      	$.each(person_crimen, function(index, value) {
-			      	$('#persons').append('<div><div class="inbox-item"><div class="inbox-item-img"><img src="{{ asset('images') }}/'+ value.id +'.jpg" class="rounded-circle bx-shadow-lg" alt=""></div><p class="inbox-item-author">'+ value.nombre +'</p><p class="inbox-item-text">' + value.cedula + '</p><p class="inbox-item-date">' + value.total + ' crímen(es)</p></div></div>');
+			      	$('#persons').append('<div><div class="inbox-item"><div class="inbox-item-img"><img src="{{ asset('images') }}/'+ value.id +'.jpg" class="rounded-circle bx-shadow-lg" alt=""></div><p class="inbox-item-author">'+ value.nombre +'</p><p class="inbox-item-text">' + value.cedula.substr(0, 3)+'-'+value.cedula.substr(3, 7)+'-'+value.cedula.substr(10) + '</p><p class="inbox-item-date">' + value.total + ' crímen(es)</p></div></div>');
 	            });
 
 	        } // end ajax

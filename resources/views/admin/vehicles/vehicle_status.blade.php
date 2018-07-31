@@ -14,7 +14,7 @@
 		<div class="col-md-12 card-body">
 			<div class="row">
 				<div class="col-md-4 text-center">
-					<i class="fa fa-car" style="font-size: 150px; color: {{ $vehicle['color'] }};"></i>
+					<i class="fa fa-car" style="font-size: 150px; color: {{ $vehicle['color'] }}; text-shadow: 1px 1px 2px black;"></i>
 
 					{{-- Informacion del vehiculo --}}
 					<h4>{{ $vehicle['marca'] }} - {{ $vehicle['modelo'] }}</h4>
@@ -55,7 +55,7 @@
 						<div class="form-group col-md-4">
 							<label>Cédula:</label>
 							<input class="form-control" type="text" id="cedula" disabled="" readonly=""
-                            value="{{ $propietario[0]['person']['cedula'] }}">
+                            value="{{ substr($propietario[0]['person']['cedula'], 0, 3).'-'.substr($propietario[0]['person']['cedula'], 3, 7).'-'.substr($propietario[0]['person']['cedula'], 10) }}">
 						</div>
 
 						<div class="form-group col-md-8">

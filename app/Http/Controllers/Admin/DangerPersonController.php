@@ -17,6 +17,14 @@ class DangerPersonController extends Controller
 {
     public function index ()
     {
+        $alerts = DangerPerson::with('person')
+            ->paginate(10);
+
+        return view('admin.danger_person.danger_person_alerts', compact('alerts'));
+    }
+
+    public function create ()
+    {
         $people = Person::all();
 
         return view('admin.danger_person.notificate_person', [
@@ -29,7 +37,8 @@ class DangerPersonController extends Controller
     	$danger_person = DangerPerson::create([
     		'person_id' => $request->person_id,
     		'titular' => $request->titular,
-    		'descripcion' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in nunc sit amet quam pharetra hendrerit volutpat blandit nibh.',
+            'descripcion' => '',
+    		'atrapado' => '',
     		'status' => $request->status
     	]);
 
@@ -47,5 +56,16 @@ class DangerPersonController extends Controller
     	$notifications = Auth::user()->unreadNotifications;
 
     	return $notifications;
+    }
+
+    public function encontrado ($id)
+    {
+        $danger_person = DangerPerson::find($id);
+
+        $danger_person->atrapado = 'atrapado';
+        $danger_person->save();
+
+        Session::flash('success', 'El status de la alerta seleccionada ha sido cambiada satisfactoriamente.');
+        return redirect()->back();
     }
 }

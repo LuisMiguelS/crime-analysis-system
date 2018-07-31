@@ -23,11 +23,14 @@ class CrimesController extends Controller
     	$person = Person::findOrFail($request->cedula);
         $ultima_condena = optional($person->recluses->last());
         $prision = optional($person->recluses()->with('prision')->get()->last())->prision;
+        $danger_person = optional($person)->dangerPeople;
 
     	return view('admin.crimes.crime_profile', [
     		'person' => $person,
             'ultima_condena' => $ultima_condena,
-            'prision' => $prision
+            'prision' => $prision,
+            'notificaciones' => $danger_person,
+            'danger_person' => $danger_person->last()
     	]);
     }
 
@@ -60,7 +63,7 @@ class CrimesController extends Controller
         $year_crimenes = DB::select('select count(cp.id) as total, year(cp.created_at) yyear from crimes c, crime_person cp where c.id = cp.crime_id and c.id = ? group by year(cp.created_at) order by year(cp.created_at) asc', array($request->crimen));
 
         // obtiene las personas que han cometido igual crimen
-        $person_crimen = DB::select('select distinct(p.id), count(p.id) total, concat(upper(p.nombres), " ", upper(p.apellidos)) nombre, p.cedula from crime_person cp, people p where cp.person_id = p.id and cp.crime_id = ? group by p.id order by total desc', array($request->crimen));
+        $person_crimen = DB::select('select distinct(p.id), count(p.id) total, concat(upper(p.nombres), " ", upper(p.apellidos)) nombre, p.cedula from crime_person cp, people p where cp.person_id = p.id and cp.crime_id = ? and year(cp.created_at) = ? group by p.id order by total desc', array($request->crimen, $request->year));
 
         foreach($mes_crimen as $mes)
         {

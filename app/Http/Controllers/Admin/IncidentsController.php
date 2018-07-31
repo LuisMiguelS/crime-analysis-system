@@ -38,7 +38,7 @@ class IncidentsController extends Controller
         foreach($estados_incidente as $estado)
         {
             $estados[] = ucwords($estado->status);
-            $totales[] = ($estado->cant / $estado->total * 100);
+            $totales[] = number_format(($estado->cant / $estado->total * 100), 2);
         }
 
         /* Retornando la respuesta en formato JSON */

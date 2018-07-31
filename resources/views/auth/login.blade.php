@@ -59,7 +59,6 @@
 
                                 <div class="form-group row m-b-20">
                                     <div class="col-12">
-                                        <a href="page-recoverpw.html" class="text-muted pull-right"><small>Password?</small></a>
                                         <label for="password">Password</label>
                                         <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" required="" id="password" name="password" placeholder="Enter your password">
 

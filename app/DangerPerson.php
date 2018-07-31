@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class DangerPerson extends Model
 {
     protected $fillable = [
-    	'person_id', 'titular', 'descripcion', 'status'
+    	'person_id', 'titular', 'descripcion', 'status', 'atrapado'
     ];
 
 
@@ -34,13 +34,24 @@ class DangerPerson extends Model
         return $fecha;
     }
 
-    public function getStatusAttribute ($status)
+    public function getUpdatedAtAttribute ($fecha)
     {
-    	if($status == 'buscado')
-    		return '<span class="badge badge-danger">'.ucwords($status).'</span>';
-    	if($status == 'desaparecido')
-    		return '<span class="badge badge-warning">'.ucwords($status).'</span>';
+        $date = date_create($fecha);
+        $fecha = $date->format('d-m-Y');
 
-    	return $status;
+        return $fecha;
+    }
+
+    public function getStatusPersonAttribute ()
+    {
+    	if($this->status == 'buscado')
+    		return '<span class="badge badge-danger">'.ucwords($this->status.('(a)')).'</span>';
+    	if($this->status == 'desaparecido')
+    		return '<span class="badge badge-warning">'.ucwords($this->status.('(a)')).'</span>';
+    }
+
+    public function getFueAtrapadoAttribute ()
+    {
+        return '<span class="badge badge-success">'.ucwords($this->atrapado.('(a)')).'</span>';
     }
 }

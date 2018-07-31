@@ -16,7 +16,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/logout', function () {
+Route::get('/logged-out', function () {
 	return view('auth.logout');
 });
 
@@ -39,7 +39,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
 	Route::post('/generate-consulting', 'CrimesController@generateData')->name('generate_consulting');
 	
 	# Rutas para el modulo "Danger Person" #
-	Route::get('/danger-person', 'DangerPersonController@index')->name('danger_person');
+	Route::get('/danger-person-alerts', 'DangerPersonController@index')->name('danger_person_alerts');
+	Route::post('/danger-person-alert/{id}', 'DangerPersonController@encontrado')->name('danger_person_found');
+	Route::get('/danger-person', 'DangerPersonController@create')->name('danger_person');
 	Route::post('/notification', 'DangerPersonController@store')->name('save_notification');
 	Route::post('/notification/get', 'DangerPersonController@notification');
 

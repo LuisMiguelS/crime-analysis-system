@@ -19,6 +19,7 @@ class CreateDangerPeopleTable extends Migration
             $table->string('titular');
             $table->text('descripcion');
             $table->string('status');
+            $table->string('atrapado');
             $table->timestamps();
         });
     }

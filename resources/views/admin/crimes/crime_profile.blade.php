@@ -20,11 +20,15 @@
 					</div>
 
 					<h4>Status:</h4>
-					@if(isset($person->dangerPeople[0]))
-						<h3 class="text-danger">{!! strtoupper($person->dangerPeople[0]->status) !!}</h3>
-						<span class="text-muted" style="font-size: 15px;">
-							<strong>POR: </strong>{{ strtoupper($person->dangerPeople[0]->titular) }}
-						</span>
+					@if(isset($danger_person))
+						@if(!$danger_person->atrapado)
+							<h3 class="text-danger">{!! strtoupper($danger_person->status_person) !!}</h3>
+							<span class="text-muted" style="font-size: 15px;">
+								{{ strtoupper($danger_person->titular) }}
+							</span>
+						@else
+							<h3 class="text-success">SIN ALERTA</h3>
+						@endif
 					@else
 						<h3 class="text-success">SIN ALERTA</h3>
 					@endif
@@ -34,10 +38,12 @@
 						<p>
 							<i class="mdi mdi-map-marker text-default"></i> {{ $prision->nombre_prision }} - {{ $prision->direccion }}<br>
 							<i class="mdi mdi-calendar-clock text-danger"></i> {{ $ultima_condena->years }} año(s) de prisión <br>
-							<i class="mdi mdi-timer-sand text-primary"></i> [{{ $ultima_condena->created_at }}] - [{{ $ultima_condena->fecha_salida }}]
+							<i class="mdi mdi-timer-sand text-primary"></i>
+								<strong class="text-danger"> [{{ $ultima_condena->created_at }}] </strong> -
+								<strong class="text-success"> [{{ $ultima_condena->fecha_salida }}] </strong>
 						</p>
 					@else
-						<p>Ninguna</p>
+						<strong class="text-success">NINGUNA</strong>
 					@endif
 				</div>
 
@@ -97,16 +103,34 @@
 						@if(isset($prision))
 							@foreach($person->recluses as $recluse)
 								<li>
-									{{ $recluse->titular }} el <strong>{{ $recluse->created_at }}</strong> con una condena de <strong>{{ $recluse->years }} año(s)</strong>.
+									Apresado(a) por {{ $recluse->titular }} el <strong class="text-danger">{{ $recluse->created_at }}</strong>. Sentenciado(a) con una condena de <strong>{{ $recluse->years }} año(s)</strong>.
 
 									{{-- imprime cuando el prisionero salio de prision --}}
 									@if($recluse->status == 'e' or $recluse->status == 'c')
-										El recluso salió de prisión el <strong>{{ $recluse->fecha_salida }}</strong>.
+										El recluso salió de prisión el <strong class="text-success">{{ $recluse->fecha_salida }}</strong>.
 									@endif
 								</li>
 							@endforeach
 						@else
 							<li>Ningún historial de prisión.</li>
+						@endif
+					</ul>
+
+					<h3 class="mt-5">· Historial de Alertas Peligrosas</h3>
+					
+					<ul>
+						@if(isset($danger_person))
+							@foreach($notificaciones as $notificacion)
+								<li>
+									{!! $notificacion->status_person !!} {{ $notificacion->titular }} el <strong class="text-danger">{{ $notificacion->created_at }}</strong>.
+
+									@if($notificacion->atrapado)
+										Fue <strong class="text-success">atrapado(a)</strong> el <strong class="text-success">{{ $notificacion->created_at }}</strong>.
+									@endif
+								</li>
+							@endforeach
+						@else
+							<li>Ningún historial de alertas peligrosas.</li>
 						@endif
 					</ul>
 
@@ -117,7 +141,7 @@
 					<table id="datatable-buttons" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th>Titular:</th>
+                                <th>Titular</th>
                                 <th>Descripción</th>
                                 <th>Crimen</th>
                                 <th>Fecha</th>
@@ -130,7 +154,7 @@
 	                                <td>Acusado(a) por: {{ ucfirst($crime['pivot']->titular) }}</td>
 	                                <td>{{ ucfirst($crime['pivot']->descripcion) }}</td>
 	                                <td>{{ ucwords($crime->nombre_crimen) }}</td>
-	                                <td>{{ $crime['pivot']->created_at }}</td>
+	                                <td>{{ date_format($crime['pivot']->created_at, 'd/m/Y') }}</td>
 	                            </tr>
 	                        @endforeach
                         </tbody>

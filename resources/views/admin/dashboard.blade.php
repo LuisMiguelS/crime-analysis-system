@@ -80,7 +80,7 @@
                     <tr>
                         <th>Profile</th>
                         <th>Nombre</th>
-                        <th>Crimen</th>
+                        <th>Acusado por:</th>
                         <th>Prisión</th>
                         <th>Sentencia</th>
                     </tr>
@@ -98,7 +98,7 @@
                             </td>
 
                             <td>
-                                <i class="mdi mdi-close-outline text-danger"></i> {{ $recluso->crimen }}
+                                {{ ucfirst($recluso->titular) }}
                             </td>
 
                             <td>
@@ -135,7 +135,7 @@
                         @foreach($alerts as $alert)
                             <tr>
                                 <td>
-                                    <img src="{{ asset('images/'.$alert['person_id'].'.jpg') }}" title="contact-img" class="rounded-circle thumb-sm" />
+                                    <img src="{{ asset('images/'.$alert->person_id.'.jpg') }}" title="contact-img" class="rounded-circle thumb-sm" />
                                 </td>
 
                                 <td>
@@ -145,7 +145,7 @@
 
                                 <td>{{ $alert['titular'] }}</td>
 
-                                <td>{!! $alert['status'] !!}</td>
+                                <td>{!! $alert['status_person'] !!}</td>
 
                                 <td>
                                     <i class="mdi mdi-calendar-clock text-info"></i> {{ $alert['created_at'] }}
@@ -287,7 +287,8 @@
                         "#880E4F",
                         "#00B8D4",
                         "#FFAB00",
-                        "#3E2723"
+                        "#3E2723",
+                        "#b71c1c"
                     ]
                 }]
         };

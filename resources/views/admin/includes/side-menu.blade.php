@@ -35,6 +35,12 @@
             </a>
         </li>
 
+        <li>
+            <a href="{{ route('danger_person_alerts') }}">
+                <i class="fi-location-2"></i><span> Historial de Alertas </span>
+            </a>
+        </li>
+
         {{-- <li>
             <a href="javascript: void(0);"><i class="fi-location-2"></i> <span> Maps </span> <span class="menu-arrow"></span></a>
             <ul class="nav-second-level" aria-expanded="false">
