@@ -14,4 +14,17 @@ class Notice extends Model
     {
     	return asset('images_news/placeholder.jpg');
     }
+
+    public function getCreatedAtAttribute ($fecha)
+    {
+        $date = date_create($fecha);
+        $fecha = $date->format('d-m-Y');
+
+        return $fecha;
+    }
+
+    public function getTitularAttribute ($titular)
+    {
+        return ucfirst($titular);
+    }
 }

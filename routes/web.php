@@ -12,22 +12,21 @@
 */
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+# Rutas del FrontEnd
+Route::get('/', 'FrontEndController@index');
+Route::get('article/{id}', 'FrontEndController@verArticulo')->name('see_article');
+Route::get('/criminales-buscados', 'FrontEndController@criminales')->name('criminals');
 
 Route::get('/logged-out', function () {
 	return view('auth.logout');
 });
 
-Route::get('/test', function () {
-	return App\Notice::all();
-});
 
+# Rutas del Login
 Auth::routes();
 
+
 # Rutas de Administracion
-// 'middleware' => 'auth'
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function(){
 	
 	Route::get('/dashboard', 'DashboardController@index')->name('dashboard');

@@ -36,18 +36,22 @@
 
                         <div class="card-box p-5">
                             <h2 class="text-uppercase text-center pb-4">
-                                <a href="index.html" class="text-success">
+                                <a href="/" class="text-success">
                                     <span><img src="{{ asset('admin/assets/images/logo.png') }}" alt="" height="80"></span>
                                 </a>
                             </h2>
 
+                            <p class="text-center">
+                                <strong class="text-info">SOLO PERSONAL AUTORIZADO</strong>
+                            </p>
+                            
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
 
                                 <div class="form-group m-b-20 row">
                                     <div class="col-12">
                                         <label for="emailaddress">Email </label>
-                                        <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" type="email" name="email" value="{{ old('email') }}" required autofocus placeholder="Enter your email address">
+                                        <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" type="email" name="email" value="{{ old('email') }}" required autofocus placeholder="Introduce tu correo electrónico">
 
                                         @if ($errors->has('email'))
                                             <span class="invalid-feedback">
@@ -59,8 +63,8 @@
 
                                 <div class="form-group row m-b-20">
                                     <div class="col-12">
-                                        <label for="password">Password</label>
-                                        <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" required="" id="password" name="password" placeholder="Enter your password">
+                                        <label for="password">Contraseña</label>
+                                        <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" required="" id="password" name="password" placeholder="Introduce tu contraseña">
 
                                         @if ($errors->has('password'))
                                             <span class="invalid-feedback">
@@ -76,7 +80,7 @@
                                         <div class="checkbox checkbox-primary">
                                             <input id="remember" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
                                             <label for="remember">
-                                                Remember me
+                                                Recuerdame
                                             </label>
                                         </div>
 
@@ -85,7 +89,7 @@
 
                                 <div class="form-group row text-center m-t-10">
                                     <div class="col-12">
-                                        <button class="btn btn-block btn-primary waves-effect waves-light" type="submit">Sign In</button>
+                                        <button class="btn btn-block btn-primary waves-effect waves-light" type="submit">Iniciar Sesión</button>
                                     </div>
                                 </div>
 
