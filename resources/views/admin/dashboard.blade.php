@@ -55,7 +55,7 @@
 
     <div class="col-lg-6">
         <div class="card-box">
-            <h4 class="header-title">Estadísticas de crímenes por tipo de arma del año anterior <span class="text-muted">({{ date('Y') - 1 }})</span> Expresado en %</h4>
+            <h4 class="header-title">Estadísticas de crímenes por tipo de arma del año anterior <span class="text-muted">({{ date('Y') - 1 }})</span> expresado en %</h4>
             <canvas id="oilChart" height="250"></canvas>
         </div>
     </div>
@@ -267,9 +267,9 @@
         var oilData = {
             labels: [
                 <?php
-                    foreach ($crimenes_arma as $crimen)
+                    foreach ($crimenes_arma_labels as $crimen)
                     {
-                        echo "'$crimen->arma',";
+                        echo "'$crimen',";
                     }
                 ?>
             ],
@@ -277,9 +277,9 @@
                 {
                     data: [
                         <?php
-                            foreach ($crimenes_arma as $crimen)
+                            foreach ($crimenes_arma_total as $total)
                             {
-                                echo "'$crimen->total',";
+                                echo "'$total',";
                             }
                         ?>
                     ],

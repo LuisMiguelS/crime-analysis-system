@@ -11,6 +11,8 @@ class DashboardController extends Controller
 {
     public static function index()
     {
+        $denominador = 0;
+
         /* Cant. de los distintos incidentes/crimenes del año en curso */
 
         $cant_crimenes = DB::select('select count(id) cant from crime_person where year(created_at) = ?', array(date('Y')));
@@ -39,7 +41,20 @@ class DashboardController extends Controller
 
 
         /* Cantidad de crimenes agrupados por tipo de arma */
-        $crimenes_arma = DB::select('select upper(w.nombre_arma) as arma, round((count(cp.crime_id) / (select count(cp.id) from crime_person cp) * 100), 2) as total from crimes c, crime_person cp, weapons w where c.id = cp.crime_id and cp.weapon_id = w.id and year(cp.created_at) = ? group by w.nombre_arma',  array(date('Y') - 1));
+       /* $crimenes_arma = DB::select('select upper(w.nombre_arma) as arma, round((count(cp.crime_id) / (select count(cp.id) from crime_person cp) * 100), 2) as total from crimes c, crime_person cp, weapons w where c.id = cp.crime_id and cp.weapon_id = w.id and year(cp.created_at) = ? group by w.nombre_arma',  array(date('Y') - 1));*/
+
+        $crimenes_arma = DB::select('select upper(w.nombre_arma) as arma, count(cp.crime_id) as total from crimes c, crime_person cp, weapons w where c.id = cp.crime_id and cp.weapon_id = w.id and year(cp.created_at) = ? group by w.nombre_arma',  array(date('Y') - 1));
+
+        foreach($crimenes_arma as $totales)
+        {
+            $denominador += $totales->total;
+        }
+
+        foreach($crimenes_arma as $arma)
+        {
+            $nombres_arma[] = $arma->arma;
+            $cant_armas[] = number_format(($arma->total / $denominador) * 100, 2);
+        }
 
 
         /* Personas peligrosas - Ultimas alertas */
@@ -59,7 +74,8 @@ class DashboardController extends Controller
             'crimenes' => $crimenes,
             'reclusos' => $reclusos,
             'crimenes_ubicacion' => $crimenes_ubicacion,
-            'crimenes_arma' => $crimenes_arma,
+            'crimenes_arma_labels' => $nombres_arma,
+            'crimenes_arma_total' => $cant_armas,
             'alerts' => $alerts,
             'prisioneros_yyear' => $prisioneros_yyear
         ]);

@@ -47,7 +47,7 @@
 	{{-- Grafico de pie --}}
 	<div class="col-lg-6">
 		<div class="card-box">
-			<h4 class="header-title">Tipos de armas utilizadas en el tipo de crimen consultado</h4>
+			<h4 class="header-title">Tipos de armas utilizadas en el tipo de crimen consultado (expresado en %)</h4>
 			<div class="crimen_arma">
 				<canvas id="crimen_arma" height="250"></canvas>
 			</div>

@@ -47,7 +47,7 @@
 
 	<div class="col-lg-6">
         <div class="card-box">
-            <h4 class="header-title">Cantidad de incidentes ocurridos por status Expresado en %</h4>
+            <h4 class="header-title">Cantidad de incidentes ocurridos por status (expresado en %)</h4>
             <div class="oilChart">
             	<canvas id="oilChart" height="250"></canvas>
             </div>
