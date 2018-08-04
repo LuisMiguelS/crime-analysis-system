@@ -13,7 +13,7 @@
 
 
 # Rutas del FrontEnd
-Route::get('/', 'FrontEndController@index');
+Route::get('/', 'FrontEndController@index')->name('home');
 Route::get('article/{id}', 'FrontEndController@verArticulo')->name('see_article');
 Route::get('/criminales-buscados', 'FrontEndController@criminales')->name('criminals');
 
@@ -27,7 +27,7 @@ Auth::routes();
 
 
 # Rutas de Administracion
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function(){
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'admin']], function(){
 	
 	Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 

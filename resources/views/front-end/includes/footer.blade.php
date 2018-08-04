@@ -9,12 +9,12 @@
 		
 		<div class="col-md-4 footer-middle">
 			<h4>Noticias Oficiales</h4>
-			<p>Noticias proveidas por el departamento de la policía</p>
+			<p>Noticias proveidas por el departamento de la policía.</p>
 		</div>
 		
 		<div class="col-md-4 footer-right">
 			<h4>Criminales Buscados</h4>
-			<li><a>- Conoce a quienes persigue la ley </a></li>
+			<li><a>- Conoce a quienes persigue la ley. </a></li>
 		</div>
 		<div class="clearfix"></div>
 	</div>

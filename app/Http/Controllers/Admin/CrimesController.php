@@ -47,6 +47,8 @@ class CrimesController extends Controller
 
     public static function generateData (Request $request)
     {
+        $denominador = 0;
+
         // meses del año en _ES
         $meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
@@ -71,10 +73,15 @@ class CrimesController extends Controller
             $cant_crimen[] = $mes->total;
         }
 
+        foreach($armas_crimen as $totales)
+        {
+            $denominador += $totales->total;
+        }
+
         foreach($armas_crimen as $arma)
         {
             $nombres_arma[] = $arma->arma;
-            $cant_armas[] = $arma->total;
+            $cant_armas[] = number_format(($arma->total / $denominador) * 100, 2);
         }
 
 

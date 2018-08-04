@@ -25,7 +25,21 @@
       			<ul class="nav navbar-nav">
 		            <li class="active"><a href="/">Home</a></li>
 		            <li><a href="{{ route('criminals') }}">Criminales Buscados</a></li>
-		            <li><a href="{{ route('login') }}"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+		            @guest
+						<li><a href="{{ route('login') }}"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+					@else
+						<li>
+							<a href="{{ route('logout') }}" class="dropdown-item notify-item"
+	                           onclick="event.preventDefault();
+	                                         document.getElementById('logout-form').submit();">
+	                            <i class="fi-power"></i> <span>{{ __('Cerrar Sesión') }}</span>
+	                        </a>
+
+	                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+	                            @csrf
+	                        </form>
+	                    </li>
+		            @endguest
       			</ul>
     		</div>
   		</div>

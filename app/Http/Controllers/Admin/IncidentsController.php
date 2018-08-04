@@ -20,6 +20,8 @@ class IncidentsController extends Controller
 
     public static function generateData (Request $request)
     {
+        $denominador = 0;
+
     	// meses del año en _ES
         $meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
@@ -27,7 +29,7 @@ class IncidentsController extends Controller
         $mes_incidente = DB::select('select count(month(vi.created_at)) total, month(vi.created_at) mes from vehicle_incidents vi where year(vi.created_at) = ? group by mes', array($request->year));
 
         // cantidad de incidentes por estados (robado o perdido)
-        $estados_incidente = DB::select('select count(*) cant, vi.status, (select count(vii.id) from vehicle_incidents vii) as total from vehicle_incidents vi where year(vi.created_at) = ? group by vi.status', array($request->year));
+        $estados_incidente = DB::select('select count(*) cant, vi.status from vehicle_incidents vi where year(vi.created_at) = ? group by vi.status', array($request->year));
 
         foreach($mes_incidente as $mes)
         {
@@ -35,10 +37,15 @@ class IncidentsController extends Controller
             $cant_accidentes[] = $mes->total;
         }
 
+        foreach($estados_incidente as $total)
+        {
+            $denominador += $total->cant;
+        }
+
         foreach($estados_incidente as $estado)
         {
             $estados[] = ucwords($estado->status);
-            $totales[] = number_format(($estado->cant / $estado->total * 100), 2);
+            $totales[] = number_format(($estado->cant / $denominador) * 100, 2);
         }
 
         /* Retornando la respuesta en formato JSON */
