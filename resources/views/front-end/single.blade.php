@@ -9,7 +9,8 @@
 	<!-- Custom Theme files -->
 	<link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
 	<link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-	<link href="{{ asset('front-end/css/style.css') }}" rel='stylesheet' type='text/css' />	
+	<link href="{{ asset('front-end/css/style.css') }}" rel='stylesheet' type='text/css' />
+	<link rel="shortcut icon" href="{{ asset('admin/assets/images/favicon.ico') }}">
 	<script src="{{ asset('front-end/js/jquery-1.11.1.min.js') }}"></script>
 	<script src="{{ asset('front-end/js/bootstrap.min.js') }}"></script>
 </head>
@@ -27,7 +28,7 @@
 						<img src="{{ $articulo->img }}" class="img-responsive" alt="">
 						<div class="blog-text">
 							<h5>{{ $articulo->titular }}</h5>
-							<p>{{ $articulo->descripcion }}</p>				
+							<p>{{ $articulo->descripcion }}</p>		
 						</div>
 					</div>
 				</div>

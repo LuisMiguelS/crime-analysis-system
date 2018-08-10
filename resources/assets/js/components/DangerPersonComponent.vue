@@ -14,9 +14,10 @@
             </div>
 
             <div class="slimscroll" style="height: 230px;">
-                <a v-for="notification in notifications" href="javascript:void(0);" class="dropdown-item notify-item">
-                    <div class="notify-icon bg-danger"><i class="mdi mdi-comment-account-outline"></i></div>
+                <a v-for="notification in notifications" v-on:click="markAsRead(notification)" class="dropdown-item notify-item">
+                    <div class="notify-icon bg-danger"><i class="mdi mdi-comment-remove-outline"></i></div>
                     <p class="notify-details">
+                        <i class="fi-head"></i>
                         <strong>
                             {{ notification.data.person.nombres }} {{ notification.data.person.apellidos }}
                         </strong>
@@ -44,10 +45,18 @@
                 var data = {
                     id: notification.id
                 };
-
-                axios.post('/notification/read', data).then(response => {
-                    // window.location.href = '/post/' + notification.data.post.id;
-                    console.log(response.data);
+                
+                // marcando como leida la notificacion seleccionada
+                axios.post('/admin/notification/read', data).then(response => {
+                    
+                    // elimando visualmente la notificacion marcada como leida
+                    for (var i = 0; i < this.notifications.length; i++)
+                    {
+                        if(this.notifications[i].id == notification.id)
+                        {
+                            this.notifications.splice(i, 1);
+                        }
+                    }
                 });
             }
         }

@@ -12,6 +12,11 @@
 */
 
 
+Route::get('/test', function () {
+	return App\notification::get()->last();
+});
+
+
 # Rutas del FrontEnd
 Route::get('/', 'FrontEndController@index')->name('home');
 Route::get('article/{id}', 'FrontEndController@verArticulo')->name('see_article');
@@ -43,6 +48,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 	Route::get('/danger-person', 'DangerPersonController@create')->name('danger_person');
 	Route::post('/notification', 'DangerPersonController@store')->name('save_notification');
 	Route::post('/notification/get', 'DangerPersonController@notification');
+	Route::post('/notification/read', 'DangerPersonController@read');
 
 	# Rutas para el modulo de "Vehicles" #
 	Route::get('/vehicle-status', 'VehiclesController@consultigVehicleStatus')->name('vehicle_status');

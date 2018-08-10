@@ -95,7 +95,7 @@
 @section('scripts')
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
-<script src="http://maps.google.com/maps/api/js?key=AIzaSyCdH0OxjbEmJx1ZOLMPM5oq_bty_TZA_vk&libraries=visualization"></script>
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyCHU35HSLyROKAIwQoA9S7zCbKxM4nZG5g&libraries=visualization"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.24/gmaps.js"></script>
 
 <script type="text/javascript">

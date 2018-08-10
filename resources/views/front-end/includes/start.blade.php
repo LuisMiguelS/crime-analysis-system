@@ -23,11 +23,21 @@
     		
     		<div id="navbar" class="navbar-collapse collapse">
       			<ul class="nav navbar-nav">
-		            <li class="active"><a href="/">Home</a></li>
-		            <li><a href="{{ route('criminals') }}">Criminales Buscados</a></li>
+		            <li class="{{ request()->is('/') ? 'active' : '' }}">
+		            	<a href="/">Home</a>
+		            </li>
+		            
+		            <li class="{{ request()->is('criminales-buscados') ? 'active' : '' }}">
+		            	<a href="{{ route('criminals') }}">Criminales Buscados</a>
+		            </li>
+		            
 		            @guest
 						<li><a href="{{ route('login') }}"><span class="glyphicon glyphicon-user"></span> Login</a></li>
 					@else
+						<li>
+			            	<a href="{{ route('dashboard') }}">Dashboard</a>
+			            </li>
+
 						<li>
 							<a href="{{ route('logout') }}" class="dropdown-item notify-item"
 	                           onclick="event.preventDefault();

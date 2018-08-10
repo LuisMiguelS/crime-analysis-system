@@ -11,7 +11,7 @@
             </div>
             <a class="blog blue" href="{{ route('see_article', $notice->id) }}">Noticias</a>
             <h3><a href="{{ route('see_article', $notice->id) }}">{{ $notice->titular }}</a></h3>
-                <p>{{ $notice->descripcion }}</p>
+                <p>{{ str_limit($notice->descripcion, $limit = 150, $end = '...') }}</p>
         
             <div class="blog-poast-info">
                 <ul>

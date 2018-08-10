@@ -10,9 +10,9 @@ class Notice extends Model
     	'titular', 'descripcion', 'img'
     ];
 
-    public function getImgAttribute ($img)
+    public function getImgAttribute ()
     {
-    	return asset('images_news/placeholder.jpg');
+    	return asset('images_news/'.$this->id.'.jpg');
     }
 
     public function getCreatedAtAttribute ($fecha)

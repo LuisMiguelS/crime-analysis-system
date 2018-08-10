@@ -10,7 +10,9 @@ class FrontEndController extends Controller
 {
     public function index ()
     {
-    	$notices = Notice::paginate(5);
+    	$notices = Notice::orderBy('id', 'desc')
+            ->paginate(5);
+
     	$danger_person = DangerPerson::with('person')
     		->where('atrapado', '')
     		->orderBy('id', 'desc')

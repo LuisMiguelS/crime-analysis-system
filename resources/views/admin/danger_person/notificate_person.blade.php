@@ -43,6 +43,11 @@
 						</div>
 
 						<div class="form-group col-md-12">
+							<label>Descripción</label>
+							<textarea class="form-control" name="descripcion" id="descripcion"></textarea>
+						</div>
+
+						<div class="form-group col-md-12">
 							<button class="btn btn-success btn-block waves-effect waves-light" type="button" id="registrar">
 			                    <i class="fa fa-pencil m-r-5"></i>
 			                    <span>Registrar</span>

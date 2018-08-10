@@ -5,6 +5,13 @@
             <danger-person v-bind:notifications="notifications"></danger-person>
 
             <li class="dropdown notification-list">
+                <a class="nav-link dropdown-toggle arrow-none" href="{{ route('home') }}">
+                    <i class="fi-globe noti-icon"></i>
+                    <span class="badge badge-custom badge-pill noti-icon-badge">Blog</span>
+                </a>
+            </li>
+
+            <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" role="button"
                    aria-haspopup="false" aria-expanded="false">
                     <img src="{{ asset('admin/assets/images/users/avatar-1.jpg') }}" alt="user" class="rounded-circle"> <span class="ml-1">{{ Auth::User()->name }} <i class="mdi mdi-chevron-down"></i> </span>

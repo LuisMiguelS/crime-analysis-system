@@ -1009,7 +1009,7 @@ var app = new Vue({
 
     Echo.private('App.User.' + user_id).notification(function (notification) {
       _this.notifications.push(notification);
-      console.log(notification);
+      // console.log(notification);
     });
   }
 });
@@ -48423,18 +48423,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['notifications'],
     methods: {
         markAsRead: function markAsRead(notification) {
+            var _this = this;
+
             var data = {
                 id: notification.id
             };
 
-            axios.post('/notification/read', data).then(function (response) {
-                // window.location.href = '/post/' + notification.data.post.id;
-                console.log(response.data);
+            // marcando como leida la notificacion seleccionada
+            axios.post('/admin/notification/read', data).then(function (response) {
+
+                // elimando visualmente la notificacion marcada como leida
+                for (var i = 0; i < _this.notifications.length; i++) {
+                    if (_this.notifications[i].id == notification.id) {
+                        _this.notifications.splice(i, 1);
+                    }
+                }
             });
         }
     }
@@ -48490,12 +48499,18 @@ var render = function() {
               "a",
               {
                 staticClass: "dropdown-item notify-item",
-                attrs: { href: "javascript:void(0);" }
+                on: {
+                  click: function($event) {
+                    _vm.markAsRead(notification)
+                  }
+                }
               },
               [
                 _vm._m(1, true),
                 _vm._v(" "),
                 _c("p", { staticClass: "notify-details" }, [
+                  _c("i", { staticClass: "fi-head" }),
+                  _vm._v(" "),
                   _c("strong", [
                     _vm._v(
                       "\n                        " +
@@ -48545,7 +48560,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "notify-icon bg-danger" }, [
-      _c("i", { staticClass: "mdi mdi-comment-account-outline" })
+      _c("i", { staticClass: "mdi mdi-comment-remove-outline" })
     ])
   },
   function() {

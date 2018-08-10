@@ -36,7 +36,7 @@
 
                         <div class="card-box p-5">
                             <h2 class="text-uppercase text-center pb-4">
-                                <a href="index.html" class="text-success">
+                                <a href="/" class="text-success">
                                     <span><img src="{{ asset('admin/assets/images/logo.png') }}" alt="logo" height="80"></span>
                                 </a>
                             </h2>

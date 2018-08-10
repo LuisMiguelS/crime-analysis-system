@@ -9,11 +9,18 @@
                 <img src="{{ asset('images/'.$person->person->id) }}.jpg" class="img-responsive" alt=""/>
             </div>
             <a class="blog" style="background: #b50202;">{{ ucfirst($person->status) }}</a>
-            <h3><a href="{{ route('see_article', $person->id) }}">{{ $person->titular }}</a></h3>
+            <h3><a>{{ $person->titular }}</a></h3>
                 <p>
+                    - Nombre: <strong>{{ $person->person->nombres }} {{ $person->person->apellidos }}</strong> <br>
                     - Ciudadano(a) con número de identifiación: <strong>{{ $person->person->identificacion }}</strong> <br>
                     - Alias: <strong>{{ $person->person->alias }}</strong> <br>
                     - Edad: <strong>{{ $person->person->edad }}</strong> <br>
+                </p>
+
+                <hr>
+
+                <p>
+                    {{ ucfirst($person->descripcion) }}
                 </p>
         
             <div class="blog-poast-info">

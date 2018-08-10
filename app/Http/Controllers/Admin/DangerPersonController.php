@@ -19,7 +19,7 @@ class DangerPersonController extends Controller
     public function index ()
     {
         $alerts = DangerPerson::with('person')
-            ->paginate(10);
+            ->paginate(5);
 
         return view('admin.danger_person.danger_person_alerts', compact('alerts'));
     }
@@ -38,7 +38,7 @@ class DangerPersonController extends Controller
     	$danger_person = DangerPerson::create([
     		'person_id' => $request->person_id,
     		'titular' => $request->titular,
-            'descripcion' => '',
+            'descripcion' => $request->descripcion,
     		'atrapado' => '',
     		'status' => $request->status
     	]);
@@ -68,9 +68,16 @@ class DangerPersonController extends Controller
         $danger_person->save();
 
         # Marcando como leido la notificacion en la entidad "notifications"
-        Notifications::where('notifiable_id', $id)->update(['read_at' => now()]);
+        // Notifications::where('notifiable_id', $id)->update(['read_at' => now()]);
 
         Session::flash('success', 'El status de la alerta seleccionada ha sido cambiada satisfactoriamente.');
         return redirect()->back();
+    }
+
+    public function read (Request $request)
+    {
+        Auth::user()->unreadNotifications()->find($request->id)->MarkAsRead();
+
+        return 'success';
     }
 }

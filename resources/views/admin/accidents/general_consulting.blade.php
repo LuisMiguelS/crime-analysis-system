@@ -95,7 +95,7 @@
 <script src="{{ asset('admin/plugins/datatables/buttons.print.min.js') }}"></script>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
-<script src="http://maps.google.com/maps/api/js?key=AIzaSyCdH0OxjbEmJx1ZOLMPM5oq_bty_TZA_vk&libraries=visualization"></script>
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyA91WBqim-lwys9FfBCVIhppGp029bDug0&libraries=visualization"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.24/gmaps.js"></script>
 
 <script type="text/javascript">
